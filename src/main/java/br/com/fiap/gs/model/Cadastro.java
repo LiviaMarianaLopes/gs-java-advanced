@@ -26,4 +26,13 @@ public class Cadastro {
     @OneToOne
     @JoinColumn(name = "id_login", referencedColumnName = "id")
     private Login login;
+
+    public Cadastro(String nome, String email, Long rg, Long cpf, String senha, Login login) {
+        this.nome = nome;
+        this.email = email;
+        this.rg = rg;
+        this.cpf = cpf;
+        this.senha = senha;
+        this.login = login;
+    }
 }

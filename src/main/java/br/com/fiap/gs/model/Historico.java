@@ -27,7 +27,7 @@ public class Historico {
     @ManyToOne
     @JoinColumn(name = "id_cadastro", referencedColumnName = "id")
     private Cadastro cadastro;
-    @OneToMany
+    @OneToOne
     @JoinColumn(name = "id_veiculo", referencedColumnName = "id")
     private Veiculo veiculo;
 }
