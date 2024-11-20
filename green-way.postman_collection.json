@@ -1,0 +1,603 @@
+{
+	"info": {
+		"_postman_id": "df079ae8-82d9-4fd4-a6f8-f2c0818823a5",
+		"name": "green-way",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "33326410"
+	},
+	"item": [
+		{
+			"name": "cadastro",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Successful POST request\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([200, 201]);",
+							"});",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"nome\": \"teste\",\n  \"email\": \"teste@gmail.com\",\n  \"rg\": 601478540,\n  \"cpf\": 12332141408,\n  \"senha\": \"senha\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/cadastro",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"cadastro"
+					]
+				},
+				"description": "This is a POST request, submitting data to an API via the request body. This request submits JSON data, and the data is reflected in the response.\n\nA successful POST request typically returns a `200 OK` or `201 Created` response code."
+			},
+			"response": []
+		},
+		{
+			"name": "login",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Successful POST request\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([200, 201]);",
+							"});",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"email\": \"teste@gmail.com\",\n  \"senha\": \"senha\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/cadastro/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"cadastro",
+						"login"
+					]
+				},
+				"description": "This is a POST request, submitting data to an API via the request body. This request submits JSON data, and the data is reflected in the response.\n\nA successful POST request typically returns a `200 OK` or `201 Created` response code."
+			},
+			"response": []
+		},
+		{
+			"name": "ReadAll cadastro",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJhdXRoLWFwaSIsInN1YiI6ImxpdmlhQGdtYWlsLmNvbSIsImV4cCI6MTczMjA0NTUxMH0.m0xJ96kpXORqYymld_IrrVA0WCNO0irvCIEk6fmfVHg",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/cadastro",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"cadastro"
+					]
+				},
+				"description": "This is a GET request and it is used to \"get\" data from an endpoint. There is no request body for a GET request, but you can use query parameters to help specify the resource you want data on (e.g., in this request, we have `id=1`).\n\nA successful GET response will have a `200 OK` status, and should include some kind of response body - for example, HTML web content or JSON data."
+			},
+			"response": []
+		},
+		{
+			"name": "Update cadastro",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Successful PUT request\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([200, 201, 204]);",
+							"});",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJhdXRoLWFwaSIsInN1YiI6InRlc3RlQGdtYWlsLmNvbSIsImV4cCI6MTczMjEyODc4OX0.JxVTULBFIQJgtfb5giW2lMhFOqxrnhDEjwSq4-Q2m3s",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"nome\": \"Lívia\",\n  \"email\": \"livia@gmail.com\",\n  \"rg\": 101233214,\n  \"cpf\": 12332141408,\n  \"senha\": \"senha\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/cadastro/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"cadastro",
+						"1"
+					]
+				},
+				"description": "This is a PUT request and it is used to overwrite an existing piece of data. For instance, after you create an entity with a POST request, you may want to modify that later. You can do that using a PUT request. You typically identify the entity being updated by including an identifier in the URL (eg. `id=1`).\n\nA successful PUT request typically returns a `200 OK`, `201 Created`, or `204 No Content` response code."
+			},
+			"response": []
+		},
+		{
+			"name": "ReadById cadastro",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJhdXRoLWFwaSIsInN1YiI6ImxpdmlhQGdtYWlsLmNvbSIsImV4cCI6MTczMjA0NTUxMH0.m0xJ96kpXORqYymld_IrrVA0WCNO0irvCIEk6fmfVHg",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/cadastro/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"cadastro",
+						"1"
+					],
+					"query": [
+						{
+							"key": "",
+							"value": null,
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete cadastro",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Successful DELETE request\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([200, 202, 204]);",
+							"});",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJhdXRoLWFwaSIsInN1YiI6InRlc3RlQGdtYWlsLmNvbSIsImV4cCI6MTczMjE0MDAzMH0.6bl6R7YFf1i-KsVDScGe3o0iPT7X-vV-3lipyFqNq0Q",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/cadastro/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"cadastro",
+						"2"
+					]
+				},
+				"description": "This is a DELETE request, and it is used to delete data that was previously created via a POST request. You typically identify the entity being updated by including an identifier in the URL (eg. `id=1`).\n\nA successful DELETE request typically returns a `200 OK`, `202 Accepted`, or `204 No Content` response code."
+			},
+			"response": []
+		},
+		{
+			"name": "Create veiculo",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJhdXRoLWFwaSIsInN1YiI6InRlc3RlQGdtYWlsLmNvbSIsImV4cCI6MTczMjE0MzE1MX0.D2hPy_gu9gg68hFDsTSjOcrrKkv1d2Tv56cHFAC5s8A",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"numeroDeSerie\": \"P1234\",\r\n  \"latitude\": \"-3.5938900\",\r\n  \"longitude\": \"-54.6241700\",\r\n  \"tipoVeiculo\": \"P\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/veiculo",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"veiculo"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ReadAll veiculo",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJhdXRoLWFwaSIsInN1YiI6ImxpdmlhQGdtYWlsLmNvbSIsImV4cCI6MTczMjEyNzExMX0.ppxGwzAC4vEwG7-ZaSyKRezPrZ26geKOthx3u19wz3Y",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/veiculo",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"veiculo"
+					],
+					"query": [
+						{
+							"key": "",
+							"value": null,
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update veiculo",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJhdXRoLWFwaSIsInN1YiI6InRlc3RlQGdtYWlsLmNvbSIsImV4cCI6MTczMjE0MDAzMH0.6bl6R7YFf1i-KsVDScGe3o0iPT7X-vV-3lipyFqNq0Q",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"numeroDeSerie\": \"B1234\",\r\n  \"latitude\": \"-23.563579\",\r\n  \"longitude\": \"-46.691607\",\r\n  \"tipoVeiculo\": \"B\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/veiculo/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"veiculo",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ReadById veiculo",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJhdXRoLWFwaSIsInN1YiI6ImxpdmlhQGdtYWlsLmNvbSIsImV4cCI6MTczMjA2NjgyNX0.sfwBNYQXrFuK9C5yzRPq-JK6lfXnJ_9y3GOwvGnOL5E",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/veiculo/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"veiculo",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete veiculo",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJhdXRoLWFwaSIsInN1YiI6ImxpdmlhQGdtYWlsLmNvbSIsImV4cCI6MTczMjA2NzAwN30.9UYzU9BKyBa9uNcWtyBwJuTvQh-g5O8pcmQi1gFyAC0",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/veiculo/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"veiculo",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create historico",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJhdXRoLWFwaSIsInN1YiI6InRlc3RlQGdtYWlsLmNvbSIsImV4cCI6MTczMjE0MzE1MX0.D2hPy_gu9gg68hFDsTSjOcrrKkv1d2Tv56cHFAC5s8A",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"data\": \"04/12/2024\",\r\n  \"localPartida\": \"Av. Paulista\",\r\n  \"localDestino\": \"Pinheiros\",\r\n  \"tempoViagem\": 110,\r\n  \"percurso\": \"2km\",\r\n  \"idCadastro\": 1,\r\n  \"idVeiculo\": 1\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/historico",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"historico"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ReadAll historico",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJhdXRoLWFwaSIsInN1YiI6InRlc3RlQGdtYWlsLmNvbSIsImV4cCI6MTczMjE0MDAzMH0.6bl6R7YFf1i-KsVDScGe3o0iPT7X-vV-3lipyFqNq0Qa",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/historico",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"historico"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update historico",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJhdXRoLWFwaSIsInN1YiI6InRlc3RlQGdtYWlsLmNvbSIsImV4cCI6MTczMjE0MzE1MX0.D2hPy_gu9gg68hFDsTSjOcrrKkv1d2Tv56cHFAC5s8A",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"data\": \"30/01/2024\",\r\n  \"localPartida\": \"Av. Paulista\",\r\n  \"localDestino\": \"Pinheiros\",\r\n  \"tempoViagem\": 110,\r\n  \"percurso\": \"2km\",\r\n  \"idCadastro\": 1,\r\n  \"idVeiculo\": 1\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/historico/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"historico",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ReadById historico",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJhdXRoLWFwaSIsInN1YiI6ImxpdmlhQGdtYWlsLmNvbSIsImV4cCI6MTczMjA3MjQyOH0.Rls9AkioAttfd40xz6BjZKLyZ66URrc39E0gvO-kW34",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/historico/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"historico",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete historico",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJhdXRoLWFwaSIsInN1YiI6InRlc3RlQGdtYWlsLmNvbSIsImV4cCI6MTczMjE0MzE1MX0.D2hPy_gu9gg68hFDsTSjOcrrKkv1d2Tv56cHFAC5s8A",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/historico/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"historico",
+						"1"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "id",
+			"value": "1"
+		},
+		{
+			"key": "base_url",
+			"value": "https://postman-rest-api-learner.glitch.me/"
+		}
+	]
+}
