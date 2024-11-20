@@ -156,8 +156,8 @@ public class CadastroController {
             cadastroExistente.setNome(cadastroRequest.nome());
             cadastroExistente.setEmail(cadastroRequest.email());
             cadastroExistente.setSenha(cadastroRequest.senha());
-            cadastroExistente.setRg(cadastroRequest.rg());
-            cadastroExistente.setCpf(cadastroRequest.cpf());
+            cadastroExistente.setRg(Long.parseLong(cadastroRequest.rg()));
+            cadastroExistente.setCpf(Long.parseLong(cadastroRequest.cpf()));
 
         cadastroRepository.save(cadastroExistente);
         CadastroResponse cadastroResponse = cadastroMapper.cadastroToResponse(cadastroExistente);

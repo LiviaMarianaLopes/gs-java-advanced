@@ -26,8 +26,8 @@ public class CadastroMapper {
         Cadastro novoCadastro = new Cadastro();
         novoCadastro.setNome(request.nome());
         novoCadastro.setEmail(request.email());
-        novoCadastro.setRg(request.rg());
-        novoCadastro.setCpf(request.cpf());
+        novoCadastro.setRg(Long.parseLong(request.rg()));
+        novoCadastro.setCpf(Long.parseLong(request.cpf()));
         novoCadastro.setSenha(request.senha());
         novoCadastro.setLogin(loginSalvo);
 
