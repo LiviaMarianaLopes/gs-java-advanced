@@ -6,9 +6,15 @@ import lombok.ToString;
 
 @AllArgsConstructor
 @NoArgsConstructor
-@ToString
 public enum TipoVeiculo {
-    B,
-    P;
-    private char tipoVeiculo;
+    B('B'),
+    P('P');
+    private char tipo;
+
+    @Override
+    public String toString() {
+        return "TipoVeiculo{" +
+                "tipo=" + tipo +
+                '}';
+    }
 }
