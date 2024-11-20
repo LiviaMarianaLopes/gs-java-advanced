@@ -8,7 +8,7 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "GS_BICICLETA")
+@Table(name = "GS_VEICULO")
 public class Veiculo {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -18,7 +18,7 @@ public class Veiculo {
     @Column(name = "latitude")
     private String latitude;
     @Column(name = "longitude")
-    private String londitude;
+    private String longitude;
     @Enumerated(EnumType.STRING)  // Define que o valor do enum será salvo como 'B' ou 'P' no banco
     @Column(name = "TIPO_VEICULO", nullable = false)
     private TipoVeiculo tipoVeiculo;
