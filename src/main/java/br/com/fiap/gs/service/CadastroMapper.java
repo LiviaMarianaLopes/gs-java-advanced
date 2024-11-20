@@ -16,9 +16,6 @@ public class CadastroMapper {
     private LoginRepository loginRepository;
     @Transactional
     public Cadastro requestToCadastro(CadastroRequest request) {
-        if (loginRepository.findByEmail(request.email()).isPresent()) {
-            throw new IllegalArgumentException("O email já foi cadastrado.");
-        }
         String encryptedPassword = new BCryptPasswordEncoder().encode(request.senha());
         Login novoLogin = new Login(request.email(), encryptedPassword);
         Login loginSalvo = loginRepository.save(novoLogin);

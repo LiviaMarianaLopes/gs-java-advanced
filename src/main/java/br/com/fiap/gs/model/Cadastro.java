@@ -8,7 +8,7 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "GS_CADSATRO")
+@Table(name = "GS_CADASTRO")
 public class Cadastro {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -17,9 +17,9 @@ public class Cadastro {
     private String nome;
     @Column(name = "email")
     private String email;
-    @Column(name = "rg")
+    @Column(name = "numero_rg")
     private Long rg;
-    @Column(name = "cpf")
+    @Column(name = "numero_cpf")
     private Long cpf;
     @Column(name = "senha")
     private String senha;

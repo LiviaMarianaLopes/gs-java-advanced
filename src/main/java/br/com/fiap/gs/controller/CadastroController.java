@@ -57,7 +57,10 @@ public class CadastroController {
             var usuarioSenha = new UsernamePasswordAuthenticationToken(authDTO.email(), authDTO.senha());
             var auth = this.authenticationManager.authenticate(usuarioSenha);
             var token = tokenService.generateToken((Login) auth.getPrincipal());
-            return ResponseEntity.ok(new LoginResponse(token));
+            Cadastro cadastro = cadastroRepository.findByEmail(authDTO.email())
+                    .orElseThrow(() -> new RuntimeException("Cadastro não encontrado"));
+            ;
+            return ResponseEntity.ok(new LoginResponse(token, cadastro.getId()));
         } catch (BadCredentialsException e) {
             return ResponseEntity
                     .badRequest()
@@ -72,7 +75,12 @@ public class CadastroController {
                     content = @Content(schema = @Schema()))
     })
     @PostMapping
-    public ResponseEntity<CadastroResponse> cadastrar(@Validated @RequestBody CadastroRequest request) {
+    public ResponseEntity cadastrar(@Validated @RequestBody CadastroRequest request) {
+        if (loginRepository.findByEmail(request.email()).isPresent()) {
+            return ResponseEntity
+                    .badRequest()
+                    .body("O email já foi cadastrado");
+        }
         Cadastro cadastroConvertido = cadastroMapper.requestToCadastro(request);
         Cadastro cadastro = cadastroRepository.save(cadastroConvertido);
         if (cadastro.getId() != null) {
