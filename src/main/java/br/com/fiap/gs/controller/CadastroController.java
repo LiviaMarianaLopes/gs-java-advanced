@@ -19,6 +19,9 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.hateoas.EntityModel;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -50,7 +53,25 @@ public class CadastroController {
     private LoginRepository loginRepository;
     @Autowired
     private TokenService tokenService;
-
+    @Operation(
+            summary = "Autentica o usuário e retorna um token JWT",
+            description = "Realiza a autenticação de um usuário com base no email e senha fornecidos. Se as credenciais forem válidas, retorna um token JWT e o ID do cadastro associado."
+    )
+    @ApiResponses(value = {
+            @ApiResponse(
+                    responseCode = "200",
+                    description = "Autenticação realizada com sucesso",
+                    content = @Content(
+                            mediaType = "application/json",
+                            schema = @Schema(implementation = LoginResponse.class)
+                    )
+            ),
+            @ApiResponse(
+                    responseCode = "400",
+                    description = "Credenciais inválidas",
+                    content = @Content(mediaType = "application/json")
+            )
+    })
     @PostMapping("/login")
     public ResponseEntity<?> login(@RequestBody @Valid AuthDTO authDTO) {
         try {
@@ -98,8 +119,14 @@ public class CadastroController {
             @ApiResponse(responseCode = "200", description = "Busca realizada com sucesso")
     })
     @GetMapping
-    public ResponseEntity<List<EntityModel<CadastroResponse>>> readCadastros() {
-        List<Cadastro> listaCadastros = cadastroRepository.findAll();
+    public ResponseEntity<List<EntityModel<CadastroResponse>>> readCadastros(
+            @RequestParam(defaultValue = "0") int page,
+
+            @RequestParam(defaultValue = "10") int size
+    ) {
+        Pageable pageable = PageRequest.of(page, size);
+        Page<Cadastro> listaCadastros = cadastroRepository.findAll(pageable);
+
         if (listaCadastros.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
@@ -114,7 +141,7 @@ public class CadastroController {
                     linkTo(methodOn(CadastroController.class)
                             .update(cadastro.getId(), null)).withRel("Atualizar cadastro"),
                     linkTo(methodOn(CadastroController.class)
-                            .readCadastros()).withRel("Lista de cadastros")
+                            .readCadastros(0, 10)).withRel("Lista de cadastros")
             );
             listaCadastrosResponse.add(cadastroModel);
         }
@@ -142,7 +169,7 @@ public class CadastroController {
                 linkTo(methodOn(CadastroController.class)
                         .update(id, null)).withRel("Atualizar cadastro"),
                 linkTo(methodOn(CadastroController.class)
-                        .readCadastros()).withRel("Lista de cadastros")
+                        .readCadastros(0, 10)).withRel("Lista de cadastros")
         );
         return new ResponseEntity<>(cadastroModel, HttpStatus.OK);
     }
