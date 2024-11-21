@@ -13,6 +13,10 @@ import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.hateoas.EntityModel;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -59,8 +63,14 @@ public class VeiculoController {
             @ApiResponse(responseCode = "200", description = "Busca realizada com sucesso")
     })
     @GetMapping
-    public ResponseEntity<List<EntityModel<VeiculoResponse>>> readVeiculos() {
-        List<Veiculo> listaVeiculos = veiculoRepository.findAll();
+    public ResponseEntity<List<EntityModel<VeiculoResponse>>> readVeiculos(
+            @RequestParam(defaultValue = "0") int page,
+
+            @RequestParam(defaultValue = "10") int size
+    ){
+        Pageable pageable = PageRequest.of(page, size, Sort.by("id").ascending());
+        Page<Veiculo> listaVeiculos = veiculoRepository.findAll(pageable);
+
         if (listaVeiculos.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
@@ -75,7 +85,7 @@ public class VeiculoController {
                     linkTo(methodOn(VeiculoController.class)
                             .update(veiculo.getId(), null)).withRel("Atualizar veiculo"),
                     linkTo(methodOn(VeiculoController.class)
-                            .readVeiculos()).withRel("Lista de veiculos")
+                            .readVeiculos(0, 10)).withRel("Lista de veiculos")
             );
             listaVeiculosResponse.add(veiculoModel);
         }
@@ -103,7 +113,7 @@ public class VeiculoController {
                 linkTo(methodOn(VeiculoController.class)
                         .update(id, null)).withRel("Atualizar veiculo"),
                 linkTo(methodOn(VeiculoController.class)
-                        .readVeiculos()).withRel("Lista de veiculos")
+                        .readVeiculos(0, 10)).withRel("Lista de veiculos")
         );
         return new ResponseEntity<>(veiculoModel, HttpStatus.OK);
     }
