@@ -81,15 +81,29 @@ Duas coleções do Postman foram disponibilizadas para facilitar os testes:
 [Link para o vídeo](https://youtu.be/Uz4d2euEe4U )
 
 ##  Vídeo pitch
-[Link para o vídeo](https://youtu.be/Uz4d2euEe4U )
+[Link para o vídeo](https://youtu.be/prXNnBucdLA )
 
 
 ## Prints dos Testes
 
 Abaixo estão os prints de alguns testes realizados na API utilizando o **Postman**:
 
+| **Recurso**    | **Ação**                | **Endpoint**              | **Resultado Esperado**                                  | **Imagem do Teste**                                     |
+|-----------------|-------------------------|---------------------------|--------------------------------------------------------|--------------------------------------------------------|
+| **Login**    | Realiza login      | POST /cadastro/login            | Retorna 200 com um token jwt e id do cadastro         | ![Teste Realizar Login](images/post-login.png)|
+| **Cadastro**    | Criar novo usuário      | POST /cadastro            | Retorna 201 com os dados do usuário cadastrado         | ![Teste Criar Usuário](images/post-cadastro.png)|
+| **Cadastro**    | Buscar usuário          | GET /cadastro/{id}        | Retorna 200 com os dados do usuário correspondente     | ![Teste Buscar Usuário](images/get-cadastro.png)|
+| **Cadastro**    | Atualizar dados         | PUT /cadastro/{id}        | Retorna 200 com os dados atualizados do usuário        | ![Teste Atualizar Usuário](images/put-cadastro.png)|
+| **Cadastro**    | Excluir usuário         | DELETE /cadastro/{id}     | Retorna 200 com mensagem de sucesso                   | ![Teste Excluir Usuário](images/delete-cadastro.png)|
+| **Veículo**     | Listar veículos         | GET /veiculos             | Retorna 200 com lista de veículos disponíveis          | ![Teste Listar Veículos](images/get-veiculo.png)|
+| **Veículo**     | Adicionar veículo       | POST /veiculos            | Retorna 201 com os dados do veículo cadastrado         | ![Teste Adicionar Veículo](images/post-veiculo.png)|
+| **Veículo**     | Atualizar veículo       | PUT /veiculos/{id}        | Retorna 200 com os dados atualizados do veículo        | ![Teste Atualizar Veículo](images/put-veiculo.png)|
+| **Veículo**     | Remover veículo         | DELETE /veiculos/{id}     | Retorna 200 com mensagem de sucesso                   | ![Teste Remover Veículo](images/delete-veiculo.png)|
+| **Histórico**   | Listar histórico        | GET /historico/{idUsuario}| Retorna 200 com o histórico de viagens do usuário      | ![Teste Listar Histórico](images/get-historico.png)|
+| **Histórico**   | Adicionar viagem        | POST /historico           | Retorna 201 com os dados da viagem cadastrada          | ![Teste Adicionar Viagem](images/post-historico.png)|
+| **Histórico**   | Atualizar viagem        | PUT /historico/{id}       | Retorna 200 com os dados atualizados da viagem         | ![Teste Atualizar Viagem](images/put-historico.png)|
+| **Histórico**   | Remover viagem          | DELETE /historico/{id}    | Retorna 200 com mensagem de sucesso                   | ![Teste Remover Viagem](images/delete-historico.png)|
 
-<img width="300" src="images/Captura de tela 2024-10-27 160231.png"/>
 
 
 
