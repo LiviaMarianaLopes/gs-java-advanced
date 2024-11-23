@@ -70,15 +70,15 @@ Duas coleções do Postman foram disponibilizadas para facilitar os testes:
 5. Execute os testes para validar os endpoints da aplicação.
 
 ## Diagramas da Aplicação
+
 ### Diagrama de classes
 ![Diagrama de classe](./images/gs-diagrama-classes.png)
-### Modelagem do banco de dados
-![Modelo relacional](./images/RelationalModel.png)
+
 ### Desenho da arquitetura 
 ![Desenho da arquitetura](./images/desenho-arquitetura-gs.png)
 
 ## Vídeo demonstrando o software funcionando
-[Link para o vídeo](https://youtu.be/Uz4d2euEe4U )
+[Link para o vídeo](https://youtu.be/XlaRs0WwFGY )
 
 ##  Vídeo pitch
 [Link para o vídeo](https://youtu.be/prXNnBucdLA )
@@ -98,8 +98,7 @@ Abaixo estão os prints de alguns testes realizados na API utilizando o **Postma
 | **Veículo**     | Listar veículos         | GET /veiculos             | Retorna 200 com lista de veículos disponíveis          | ![Teste Listar Veículos](images/get-veiculo.png)|
 | **Veículo**     | Adicionar veículo       | POST /veiculos            | Retorna 201 com os dados do veículo cadastrado         | ![Teste Adicionar Veículo](images/post-veiculo.png)|
 | **Veículo**     | Atualizar veículo       | PUT /veiculos/{id}        | Retorna 200 com os dados atualizados do veículo        | ![Teste Atualizar Veículo](images/put-veiculo.png)|
-| **Veículo**     | Remover veículo         | DELETE /veiculos/{id}     | Retorna 200 com mensagem de sucesso                   | ![Teste Remover Veículo](images/delete-veiculo.png)|
-| **Histórico**   | Listar histórico        | GET /historico/{idUsuario}| Retorna 200 com o histórico de viagens do usuário      | ![Teste Listar Histórico](images/get-historico.png)|
+| **Histórico**   | Listar histórico        | GET /historico/{idUsuario}| Retorna 200 com o histórico de viagens do usuário      | ![Teste Listar Histórico](images/get-hsitorico.png)|
 | **Histórico**   | Adicionar viagem        | POST /historico           | Retorna 201 com os dados da viagem cadastrada          | ![Teste Adicionar Viagem](images/post-historico.png)|
 | **Histórico**   | Atualizar viagem        | PUT /historico/{id}       | Retorna 200 com os dados atualizados da viagem         | ![Teste Atualizar Viagem](images/put-historico.png)|
 | **Histórico**   | Remover viagem          | DELETE /historico/{id}    | Retorna 200 com mensagem de sucesso                   | ![Teste Remover Viagem](images/delete-historico.png)|
